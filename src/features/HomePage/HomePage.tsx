@@ -11,24 +11,14 @@ function HomePage() {
     const quote = useAppSelector((state) => state.quote.text);
     const author = useAppSelector((state) => state.quote.author);
 
-    const [currentQuote, setCurrentQuote] = useState("");
-    const [currentAuthor, setCurrentAuthor] = useState("");
+
     const [loadingQuote, setLoadingQuote] = useState(false);
-    const [newQuoteReceived, setNewQuoteReceived] = useState(false);
 
     const getNewQuoteHandler = async () => {
         setLoadingQuote(true);
         await dispatch(fetchQuote())
         setLoadingQuote(false);
-        setNewQuoteReceived(true);
     }
-    useEffect(() => {
-        if (newQuoteReceived) {
-            setCurrentQuote(quote);
-            setCurrentAuthor(author);
-            setNewQuoteReceived(false);
-        }
-    }, [quote]);
 
     useEffect(() => {
         const getNewQuote = async () => {
@@ -66,10 +56,10 @@ function HomePage() {
             <Card sx={{maxWidth: { xs: "90%", sm: "70%", md: "50%" }, my: "1.5rem", mx: "auto" }}>
                 <CardContent>
                     <Typography variant="h5" align="center" >
-                        {loadingQuote ? "Loading..." : currentQuote}
+                        {loadingQuote ? "Loading..." : quote}
                     </Typography>
                     <Typography variant="subtitle1" align="center" sx={{ mt: 2 }}>
-                        {loadingQuote ? "" : `By: ${currentAuthor}`}
+                        {loadingQuote ? "" : `By: ${author}`}
                     </Typography>
                 </CardContent>
                 <CardActions>
