@@ -1,0 +1,23 @@
+
+
+.NavBar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #ffffff;
+}
+
+.pages{
+    display: flex;
+    gap: 20px;
+}
+
+.logo {
+    height: 40px;
+    width: auto;
+}
+.logoContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
